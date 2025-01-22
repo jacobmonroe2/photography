@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Francisco - Jacob Monroe Photography</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+        }
+        header {
+            position: relative;
+            height: 60vh;
+            background: url('images/DSC00269-Enhanced-NR.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        header h1 {
+            z-index: 2;
+            position: relative;
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+            color: #ffffff;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 1000;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+        .nav-links a {
+            margin: 0 15px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+        .logo-center {
+            width: 80px;
+            height: auto;
+            position: absolute;
+            left: 48%;
+            transform: translateX(-50%);
+        }
+        .social-icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-right: 60px;
+        }
+        .social-icons img {
+            width: 30px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+        main {
+            padding: 50px 20px;
+        }
+        section {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+        section h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            transition: opacity 0.3s ease-in-out, transform 0.3s;
+            opacity: 1;
+        }
+        .gallery-item:hover img {
+            opacity: 0.3;
+            transform: scale(1.05);
+        }
+        .gallery .description {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .gallery-item:hover .description {
+            opacity: 1;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 10px;
+            background-color: #000;
+            color: #777;
+            position: fixed; 
+            bottom: 0; 
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+        }
+        footer p {
+            margin: 0;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="washington-dc.html">Washington, D.C.</a>
+        <a href="events.html">Events</a>
+    </div>
+    <img src="images/jmp-logo.png" alt="JMP Logo" class="logo-center">
+    <div class="social-icons">
+        <a href="https://www.instagram.com/jacobbb_photos/" target="_blank">
+            <img src="images/instagram-logo.png" alt="Instagram">
+        </a>
+        <a href="https://www.youtube.com/@jacobbb_photos" target="_blank">
+            <img src="images/youtube-logo.png" alt="YouTube">
+        </a>
+        <a href="https://www.linkedin.com/in/jacob-monroe-73263a211/" target="_blank">
+            <img src="images/linkedin-logo.png" alt="LinkedIn">
+        </a>
+    </div>
+</nav>
+
+<header>
+    <h1 class="fade-in">San Francisco</h1>
+</header>
+
+<main>
+    <section>
+        <h3 class="fade-in">Gallery</h3>
+        <div class="gallery">
+            <div class="gallery-item fade-in">
+                <img src="images/DSC00268.jpg" alt="Bay Bridge">
+                <div class="description">Bay Bridge</div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="images/DSC02551.jpg" alt="Japanese Lantern Corridor">
+                <div class="description">Golden Gate Park Japanese Temple</div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="images/DSC02598.jpg" alt="Golden Gate Park">
+                <div class="description">Golden Gate Park</div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="images/DSC00269-Enhanced-NR.jpg" alt="San Francisco Skyline at Night">
+                <div class="description">San Francisco Skyline at Night</div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Jacob Monroe Photography</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        const fadeElements = document.querySelectorAll('.fade-in');
+        fadeElements.forEach(el => observer.observe(el));
+    });
+</script>
+
+</body>
+</html>

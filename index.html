@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob Monroe Photography</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        header {
+            position: relative;
+            height: 80vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .slideshow img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0;
+            animation: fade 25s infinite;
+        }
+
+        .slideshow img:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .slideshow img:nth-child(2) {
+            animation-delay: 5s;
+        }
+
+        .slideshow img:nth-child(3) {
+            animation-delay: 10s;
+        }
+
+        .slideshow img:nth-child(4) {
+            animation-delay: 15s;
+        }
+
+        .slideshow img:nth-child(5) {
+            animation-delay: 20s;
+        }
+
+        @keyframes fade {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            40% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .header-content {
+            z-index: 2;
+            position: relative;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .header-content img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .header-content h2 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 1000;
+            transition: background-color 0.5s ease;
+        }
+
+        nav:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        .nav-links a {
+            margin: 0 30px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-right: 60px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        main {
+            padding: 50px 20px;
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        section h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            transition: opacity 0.3s ease-in-out, transform 0.3s;
+            opacity: 1;
+        }
+
+        .gallery-item:hover img {
+            opacity: 0.3;
+            transform: scale(1.05);
+        }
+
+        .gallery .description {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .gallery-item:hover .description {
+            opacity: 1;
+        }
+
+        .video-gallery {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .video-item {
+            position: relative;
+            width: 450px;
+            height: 450px;
+            overflow: hidden;
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .video-thumbnail:hover {
+            transform: scale(1.1);
+        }
+
+        .video-description {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .video-item:hover .video-description {
+            opacity: 1;
+        }
+
+
+
+        @keyframes play-video {
+            0% { opacity: 1; }
+            100% { opacity: 1; }
+        }
+
+
+        footer {
+            text-align: center;
+            padding: 20px 10px;
+            background-color: #000;
+            color: #777;
+            position: fixed; 
+            bottom: 0; 
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-links">
+        <a href="san-francisco.html">San Francisco</a>
+        <a href="washington-dc.html">Washington, D.C.</a>
+        <a href="events.html">Events</a>
+    </div>
+    <div class="social-icons">
+        <a href="https://www.instagram.com/jacobbb_photos/" target="_blank">
+            <img src="images/instagram-logo.png" alt="Instagram">
+        </a>
+        <a href="https://www.youtube.com/@jacobbb_photos" target="_blank">
+            <img src="images/youtube-logo.png" alt="YouTube">
+        </a>
+        <a href="https://www.linkedin.com/in/jacob-monroe-73263a211/" target="_blank">
+            <img src="images/linkedin-logo.png" alt="LinkedIn">
+        </a>
+    </div>
+</nav>
+
+<header>
+    <div class="slideshow">
+        <img src="images/DSC02742-Edit-3.jpg" alt="Metro Train">
+        <img src="images/DSC02815.jpg" alt="Golden Gate Bridge">
+        <img src="images/DSC02839-Edit.jpg" alt="Jet Ski Sunset">
+        <img src="images/DSC02872.jpg" alt="Framed Golden Gate">
+        <img src="images/DSC02701.jpg" alt="Pagoda in Trees">
+    </div>    
+    <div class="header-content fade-in">
+        <img src="images/jmp-logo.png" alt="JMP Logo">
+        <h2>Jacob Monroe</h2>
+    </div>
+</header>
+
+<main>
+    <section>
+        <h3 class="fade-in">Featured Photos</h3>
+        <div class="gallery" id="featured-photos">
+            <div class="gallery-item fade-in">
+                <a href="washington-dc.html">
+                    <img src="images/DSC02995-Edit.jpg" alt="Urban Street Scene">
+                    <div class="description">Washington D.C.</div>
+                </a>
+            </div>
+            <div class="gallery-item fade-in">
+                <a href="events.html">
+                    <img src="images/DSC06982.jpg" alt="Dramatic Moment">
+                    <div class="description">Events</div>
+                </a>
+            </div>
+            <div class="gallery-item fade-in">
+                <a href="san-francisco.html">
+                    <img src="images/DSC02701.jpg" alt="Serene Lighting">
+                    <div class="description">San Francisco</div>
+                </a>
+            </div>
+        </div>
+    </section>    
+    <section class="videos">
+        <h3 class="fade-in">My Videos</h3>
+        <div class="video-gallery">
+            <div class="video-item">
+                <a href="https://www.youtube.com/watch?v=WFHMotmZO9Q" target="_blank">
+                    <img class="video-thumbnail" src="images/sophomore-screenshot.jpg" alt="Sophomore Video Thumbnail">
+                    <div class="video-description">sophomore.mp4</div>
+                </a>
+            </div>
+            <div class="video-item">
+                <a href="https://www.youtube.com/watch?v=WrS8kGgV26c" target="_blank">
+                    <img class="video-thumbnail" src="images/bay-screenshot.jpg" alt="Bay Area Video Thumbnail">
+                    <div class="video-description">A day in SF</div>
+                </a>
+            </div>
+            <div class="video-item">
+                <a href="https://www.youtube.com/watch?v=JFMi3UOYPPc&t=3s" target="_blank">
+                    <img class="video-thumbnail" src="images/atlanta-screenshot.jpg" alt="Bowling Video Thumbnail">
+                    <div class="video-description">Atlanta Thanksgiving</div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+
+<footer>
+    <p>&copy; 2025 Jacob Monroe Photography</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const nav = document.querySelector('nav');
+        nav.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+        nav.addEventListener('mouseenter', function () {
+            nav.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        });
+        nav.addEventListener('mouseleave', function () {
+            nav.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+        const fadeElements = document.querySelectorAll('.fade-in');
+        fadeElements.forEach(el => observer.observe(el));
+
+        const videos = document.querySelectorAll('.video');
+        videos.forEach(video => {
+            video.addEventListener('mouseover', function () {
+                video.muted = false; 
+                video.play();        
+            });
+            video.addEventListener('mouseleave', function () {
+                video.pause();       
+                video.currentTime = 0; 
+                video.muted = true;  
+            });
+        });
+    });
+</script>
+
+
+</body>
+</html>
