@@ -12,7 +12,7 @@ Portfolio and booking site. Plain HTML, CSS and JavaScript, no build step.
 Everything you're likely to change is at the top of `js/site.js`:
 
 - `FILMS` — YouTube video ids, titles and filter category. Films with a `clip` play in the hero; with one clip there is no slideshow.
-- `RATES` — the hourly video rate, minimum, add-on prices, the Howard discount and the deposit percentage. If you change a price here, also update the matching number in the Rates section of `index.html`.
+- `RATES` — the hourly shoot rate, the editing-only rate, minimums, add-on prices, the Howard discount and the deposit percentage. If you change a price here, also update the matching number in the Rates section of `index.html`.
 - `CONFIG` — Instagram handle, booking email, and deposit links (Stripe Payment Link, Cash App, Venmo, Zelle). Empty ones stay hidden on the site.
 
 ## Hero video clips

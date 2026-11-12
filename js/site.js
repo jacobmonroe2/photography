@@ -30,7 +30,9 @@ const FILMS = [
 
 const RATES = {
   services: {
-    video: { label: 'Video', rate: 90, min: 2 },
+    video: { label: 'Shoot + edit', rate: 90, min: 2, hours: 'Time on site' },
+    // Editing only: the client supplies footage. Flat add-ons don't apply; rush does.
+    edit:  { label: 'Editing only', rate: 50, min: 1, hours: 'Editing time', noAddons: true },
   },
   addons: {
     reel: { label: 'Extra vertical reel', price: 45 },
@@ -322,6 +324,9 @@ function initEstimator() {
   const render = () => {
     const s = RATES.services[state.service];
     if (state.hours < s.min) state.hours = s.min;
+    if (s.noAddons) state.addons.clear();
+    $$('[data-addon]', root).forEach((b) => { b.hidden = !!s.noAddons; });
+    $('#hours-label').textContent = s.hours;
 
     $$('[data-service]', root).forEach((b) => b.setAttribute('aria-checked', b.dataset.service === state.service));
     $$('[data-addon]', root).forEach((b) => b.setAttribute('aria-pressed', state.addons.has(b.dataset.addon)));

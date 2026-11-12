@@ -181,12 +181,13 @@ button { font: inherit; color: inherit; cursor: pointer; }
 /* ---------- Rates ---------- */
 .rates-top { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding-top: 96px; padding-bottom: 72px; }
 .rates-top .lede { grid-column: 1 / span 2; }
-.rates-top .lede { text-indent: 0; }
+.rate-col { padding-right: 24px; }
+.rate-col + .rate-col { padding-left: 24px; }
+.rate-col p { margin: 14px 0 0; max-width: 22em; font-size: 16px; line-height: 1.35; color: rgba(255,255,255,.85); }
 .rate-label { display: block; color: rgba(255,255,255,.7); }
-.big-rate { display: block; text-indent: 0; margin-top: 14px; font-family: var(--display); font-weight: 400; font-size: clamp(110px, 17vw, 250px); line-height: .9; letter-spacing: -.01em; color: var(--amber); }
+.big-rate { display: block; text-indent: 0; margin-top: 14px; font-family: var(--display); font-weight: 400; font-size: clamp(96px, 11.5vw, 176px); line-height: .9; letter-spacing: -.01em; color: var(--amber); }
 .big-rate small { font-family: var(--sans); font-weight: 300; font-size: .2em; letter-spacing: -.02em; color: var(--white); margin-left: .12em; }
-.rates-top .side { grid-column: 3; justify-self: end; text-align: right; max-width: 22em; font-size: 17px; line-height: 1.3; }
-.rates-top .side .btn { margin-top: 14px; }
+.rates-top .side { grid-column: 3; justify-self: end; align-self: start; }
 .specs { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 56px 0 0; }
 .specs div { padding: 18px 24px 26px; border-top: 1px solid rgba(255,255,255,.2); }
 .specs div:nth-child(3n + 1) { padding-left: 0; }
@@ -337,7 +338,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .rates-top, .versus { grid-template-columns: 1fr; gap: 20px; padding-top: 56px; }
   .rates-top, .intro .wrap { padding-top: 96px; }
   .section { padding-top: 96px; }
-  .rates-top .side { grid-column: 1; justify-self: start; text-align: left; }
+  .rates-top .side { grid-column: 1; justify-self: start; }
+  .rate-col, .rate-col + .rate-col { padding: 0; }
   .cards { grid-template-columns: 1fr; padding-bottom: 56px; }
   .versus .lede, .versus .no { text-align: left; padding: 0; }
   .versus .no, .versus .yes { grid-column: 1; padding: 0; margin-top: 8px; }

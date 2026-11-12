@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=10">
+  <link rel="stylesheet" href="css/style.css?v=11">
 </head>
 <body>
 
@@ -86,34 +86,50 @@
 
 <section class="panel" id="rates">
   <div class="wrap rates-top">
-    <h2 class="lede"><span class="mono rate-label">Hourly rate</span><span class="big-rate">$90<small>/hr</small></span></h2>
+    <h2 class="sr">Rates</h2>
+    <div class="rate-col">
+      <span class="mono rate-label">Shoot + edit</span>
+      <span class="big-rate">$90<small>/hr</small></span>
+      <p>I film it and edit it. Billed per hour on site; editing, color grade and music are included.</p>
+    </div>
+    <div class="rate-col">
+      <span class="mono rate-label">Editing only</span>
+      <span class="big-rate">$50<small>/hr</small></span>
+      <p>You send the footage, I cut it. Billed per hour of editing.</p>
+    </div>
     <div class="side">
-      Editing, color grade and music are included in the hourly rate.
-      <div><a class="btn light" href="#book">Build an estimate</a></div>
+      <a class="btn light" href="#book">Build an estimate</a>
     </div>
     <dl class="specs">
-      <div><dt>Minimum</dt><dd>2 hours</dd></div>
-      <div><dt>Includes</dt><dd>One edited recap, up to 60 seconds</dd></div>
+      <div><dt>Minimum</dt><dd>2 hours to shoot, 1 hour to edit</dd></div>
+      <div><dt>A shoot includes</dt><dd>One edited recap, up to 60 seconds</dd></div>
       <div><dt>Delivered</dt><dd>Within 7 days</dd></div>
       <div><dt>Howard students and orgs</dt><dd>15% off</dd></div>
       <div><dt>Deposit</dt><dd>30% to hold the date</dd></div>
       <div><dt>Revisions</dt><dd>One round included</dd></div>
     </dl>
   </div>
-
 </section>
 
 <section class="section" id="book">
   <div class="wrap">
     <div class="head">
       <h2 class="h2">Build your estimate</h2>
-      <p>Set the hours and watch the total update. Send it over and I'll confirm the date.</p>
+      <p>Pick shooting or editing, set the hours, and watch the total update. Send it over and I'll confirm.</p>
     </div>
 
     <div class="book" id="estimator">
       <div>
         <div class="field">
-          <span class="mono">Time on site</span>
+          <span class="mono">What you need</span>
+          <div class="chips" role="radiogroup" aria-label="What you need">
+            <button class="chip" role="radio" data-service="video">Shoot + edit <small>$90/hr</small></button>
+            <button class="chip" role="radio" data-service="edit">Editing only <small>$50/hr</small></button>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="mono" id="hours-label">Time on site</span>
           <div class="stepper">
             <button id="hours-less" aria-label="One hour less">−</button>
             <output id="hours" aria-live="polite">2 hours</output>
@@ -200,7 +216,7 @@
   </div>
 </footer>
 
-<script src="js/site.js?v=10"></script>
+<script src="js/site.js?v=11"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
