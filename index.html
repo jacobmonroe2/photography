@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=10">
 </head>
 <body>
 
@@ -21,6 +21,7 @@
     <a class="brand" href="#top" aria-label="Jacob Monroe, home"><span class="logo"></span></a>
     <div class="nav-links mono">
       <a class="hide-s" href="#films">Films</a>
+      <a class="hide-s" href="#work">Work</a>
       <a class="hide-s" href="#photos">Stills</a>
       <a href="#rates">Rates</a>
       <a class="btn" href="#book">Book</a>
@@ -50,7 +51,17 @@
   </div>
 </section>
 
-<section class="section dark" id="photos">
+<section class="section dark" id="work">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="h2">Client Work</h2>
+      <p>Hover a clip to preview it. Click to watch with sound.</p>
+    </div>
+    <div id="work-list"></div>
+  </div>
+</section>
+
+<section class="section" id="photos">
   <div class="wrap">
     <div class="head">
       <h2 class="h2">Stills</h2>
@@ -165,7 +176,7 @@
     <div class="boxes">
       <div class="box">
         <h4>Work</h4>
-        <div><a href="#films">Films</a><a href="events.html">Events</a><a href="washington-dc.html">Washington, D.C.</a><a href="san-francisco.html">San Francisco</a></div>
+        <div><a href="#films">Films</a><a href="#work">Client work</a><a href="events.html">Events</a><a href="washington-dc.html">Washington, D.C.</a><a href="san-francisco.html">San Francisco</a></div>
       </div>
       <div class="box">
         <h4>Book</h4>
@@ -189,7 +200,7 @@
   </div>
 </footer>
 
-<script src="js/site.js?v=7"></script>
+<script src="js/site.js?v=10"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

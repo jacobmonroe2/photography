@@ -87,6 +87,13 @@ const modal = (() => {
         f.title
       );
     },
+    clip(src, title, shape) {
+      open(
+        `<div class="player ${shape}"><video src="${src}" controls autoplay playsinline></video></div>
+         <div class="bar mono"><span>${title}</span></div>`,
+        title
+      );
+    },
     photo(src, caption) {
       open(`<img src="${src}" alt="${caption}"><div class="bar mono"><span>${caption}</span></div>`, caption || 'Photo');
     },
@@ -181,6 +188,99 @@ function initFilms() {
     filters.appendChild(b);
   });
   draw();
+}
+
+/* ---------- Client work ----------
+   Clips live in videos/web as <file>.mp4 with a <file>.jpg poster.
+   shape: 'wide' for landscape projects, 'tall' for vertical ones.
+   A clip with no title is shown without a caption. */
+const WORK = [
+  {
+    name: 'notapregame',
+    role: 'Event recaps',
+    note: 'Recaps from the notapregame private DJ mixers.',
+    shape: 'wide',
+    clips: [
+      { file: 'notapregame-unido-2', title: 'Unido 2: Drunk in Love' },
+      { file: 'notapregame-1' },
+      { file: 'notapregame-2' },
+    ],
+  },
+  {
+    name: 'We Just Chattin',
+    role: 'Videographer and editor',
+    note: 'Short-form campus interviews for a student-run platform at Howard University.',
+    shape: 'tall',
+    clips: [
+      { file: 'wjc-state-of-the-party', title: 'With State of the Party' },
+      { file: 'wjc-college', title: 'Is college still worth it?' },
+      { file: 'wjc-gen-z', title: 'Is Gen Z lazy?' },
+      { file: 'wjc-what-people-think', title: 'Do you care what people think?' },
+      { file: 'wjc-sports-betting', title: 'Is sports betting bad?' },
+      { file: 'wjc-online-activism', title: 'Is online activism real activism?' },
+    ],
+  },
+  {
+    name: 'Why Not You',
+    role: 'Documentary',
+    note: 'A documentary on Gavin Pennington, behind the scenes of his clothing brand The Illest Club.',
+    shape: 'wide',
+    clips: [
+      { file: 'whynotyou-trailer', title: 'Trailer' },
+      { file: 'whynotyou-paris-1', title: 'Paris, teaser' },
+      { file: 'whynotyou-paris-rue-barbette', title: 'Paris, Rue Barbette' },
+      { file: 'whynotyou-paris-night', title: 'Paris, at night' },
+      { file: 'whynotyou-atlanta-opening', title: 'Atlanta, opening' },
+      { file: 'whynotyou-atlanta-shoot', title: 'Atlanta, the shoot' },
+    ],
+  },
+  {
+    name: 'Event promos',
+    role: 'Promo videos',
+    note: 'Promo videos for parties and events.',
+    shape: 'wide',
+    clips: [
+      { file: 'promo-country-club-chaos', title: 'Country Club Chaos' },
+      { file: 'promo-back-to-the-2000s', title: 'Back to the 2000s' },
+      { file: 'promo-new-york', title: 'New York City' },
+    ],
+  },
+];
+
+function initWork() {
+  const root = $('#work-list');
+  if (!root) return;
+  const canHover = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  WORK.forEach((p) => {
+    const block = document.createElement('article');
+    block.className = `project ${p.shape}`;
+    block.innerHTML =
+      `<header><div><span class="mono muted">${p.role}</span><h3>${p.name}</h3></div><p>${p.note}</p></header>
+       <div class="clips"></div>`;
+    const row = $('.clips', block);
+
+    p.clips.forEach((c) => {
+      const src = `videos/web/${c.file}.mp4`;
+      const b = document.createElement('button');
+      b.className = 'clip';
+      const full = c.title ? `${p.name} — ${c.title}` : p.name;
+      b.setAttribute('aria-label', `Play ${full}`);
+      b.innerHTML =
+        `<span class="frame"><img loading="lazy" src="videos/web/${c.file}.jpg" alt="">
+         <video muted loop playsinline preload="none" src="${src}"></video></span>
+         ${c.title ? `<span class="cap">${c.title}</span>` : ''}`;
+      const v = $('video', b);
+      if (canHover) {
+        // Silent preview while the mouse is over the tile
+        b.addEventListener('mouseenter', () => { b.classList.add('live'); v.play().catch(() => {}); });
+        b.addEventListener('mouseleave', () => { b.classList.remove('live'); v.pause(); });
+      }
+      b.addEventListener('click', () => { v.pause(); modal.clip(src, full, p.shape); });
+      row.appendChild(b);
+    });
+    root.appendChild(block);
+  });
 }
 
 /* ---------- Photo lightbox (gallery pages) ---------- */
@@ -359,7 +459,8 @@ function initCursor() {
   requestAnimationFrame(tick);
 }
 
-initFilms();initShots();
+initFilms();initWork();
+initShots();
 initEstimator();
 initReveal();
 initCursor();

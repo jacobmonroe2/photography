@@ -19,6 +19,10 @@ Everything you're likely to change is at the top of `js/site.js`:
 
 Put short muted loops in `videos/` (MP4, H.264, 1080p, about 8-12 seconds, under ~6 MB each). Then add `clip: 'videos/name.mp4'` to that film in `FILMS` and it plays behind the title in the hero.
 
+## Client work clips
+
+The Client Work section is driven by the `WORK` list in `js/site.js`. Each clip is a 720p file in `videos/web/` with a matching `.jpg` poster. Raw footage in `videos/client work/` is gitignored.
+
 ## Images
 
 The site loads the resized copies in `images/web/` (1800px on the long edge). Full-resolution originals stay in `images/`.
