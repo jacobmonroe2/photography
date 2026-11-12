@@ -155,7 +155,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .project:last-child { padding-bottom: 0; }
 .project header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: end; margin-bottom: 22px; }
 .project h3 { margin: 6px 0 0; font-weight: 400; font-size: clamp(26px, 3vw, 40px); line-height: 1.05; letter-spacing: -.025em; }
-.project header p { margin: 0; max-width: 30em; justify-self: end; color: #b5b5b5; font-size: 15px; }
+.project .about { justify-self: end; display: flex; align-items: flex-end; gap: 28px; }
+.project header p { margin: 0; max-width: 30em; color: #b5b5b5; font-size: 15px; }
+.stat { flex: none; padding-right: 28px; border-right: 1px solid var(--line-dark); }
+.stat b { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(40px, 4.4vw, 60px); line-height: .95; color: var(--amber); }
+.stat span { display: block; margin-top: 6px; color: #b5b5b5; }
 .clips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .project.tall .clips { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 .clip { display: block; width: 100%; padding: 0; border: 0; background: none; text-align: left; color: inherit; }
@@ -349,7 +353,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .head { flex-direction: column; align-items: flex-start; }
   .collections { gap: 10px; }
   .project header { grid-template-columns: 1fr; gap: 10px; }
-  .project header p { justify-self: start; }
+  .project .about { justify-self: start; }
   .project.tall .clips { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .collection .cap span { display: none; }
   .boxes { grid-template-columns: 1fr 1fr; }

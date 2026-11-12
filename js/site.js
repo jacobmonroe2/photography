@@ -195,7 +195,8 @@ function initFilms() {
 /* ---------- Client work ----------
    Clips live in videos/web as <file>.mp4 with a <file>.jpg poster.
    shape: 'wide' for landscape projects, 'tall' for vertical ones.
-   A clip with no title is shown without a caption. */
+   A clip with no title is shown without a caption.
+   views: a total like '2.4M' shows as a stat beside the project; leave '' to hide it. */
 const WORK = [
   {
     name: 'notapregame',
@@ -211,6 +212,9 @@ const WORK = [
   {
     name: 'We Just Chattin',
     role: 'Videographer and editor',
+    // Counted 12 Nov 2026 from public view counts: ~15.0M on Instagram (181 reels) + ~9.8M on TikTok (126 videos).
+    views: '24M+',
+    viewsLabel: 'Views on Instagram and TikTok',
     note: 'Short-form campus interviews for a student-run platform at Howard University.',
     shape: 'tall',
     clips: [
@@ -225,6 +229,10 @@ const WORK = [
   {
     name: 'Why Not You',
     role: 'Documentary',
+    // Counted 12 Nov 2026 from the whynotgav YouTube channel: 12 videos, ~27.3K views.
+    // Excludes the Miami, "A Lot Has Changed" and "10K Orders" videos.
+    views: '27K+',
+    viewsLabel: 'Views on YouTube, 12 videos',
     note: 'A documentary on Gavin Pennington, behind the scenes of his clothing brand The Illest Club.',
     shape: 'wide',
     clips: [
@@ -258,7 +266,8 @@ function initWork() {
     const block = document.createElement('article');
     block.className = `project ${p.shape}`;
     block.innerHTML =
-      `<header><div><span class="mono muted">${p.role}</span><h3>${p.name}</h3></div><p>${p.note}</p></header>
+      `<header><div><span class="mono muted">${p.role}</span><h3>${p.name}</h3></div>
+         <div class="about">${p.views ? `<div class="stat"><b>${p.views}</b><span class="mono">${p.viewsLabel || 'Total views'}</span></div>` : ''}<p>${p.note}</p></div></header>
        <div class="clips"></div>`;
     const row = $('.clips', block);
 

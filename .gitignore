@@ -3,3 +3,6 @@ videos/*
 !videos/*-loop.mp4
 !videos/*-loop.jpg
 !videos/web/
+
+# Local exports
+site-walkthrough.mp4
