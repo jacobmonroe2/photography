@@ -1,426 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jacob Monroe Photography</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-        }
-
-        header {
-            position: relative;
-            height: 80vh;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .slideshow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        .slideshow img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            opacity: 0;
-            animation: fade 25s infinite;
-        }
-
-        .slideshow img:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .slideshow img:nth-child(2) {
-            animation-delay: 5s;
-        }
-
-        .slideshow img:nth-child(3) {
-            animation-delay: 10s;
-        }
-
-        .slideshow img:nth-child(4) {
-            animation-delay: 15s;
-        }
-
-        .slideshow img:nth-child(5) {
-            animation-delay: 20s;
-        }
-
-        @keyframes fade {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            40% { opacity: 1; }
-            50% { opacity: 0; }
-            100% { opacity: 0; }
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.6);
-            z-index: 1;
-        }
-
-        .header-content {
-            z-index: 2;
-            position: relative;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .header-content img {
-            width: 150px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        .header-content h2 {
-            font-size: 2rem;
-            margin: 0;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            z-index: 1000;
-            transition: background-color 0.5s ease;
-        }
-
-        nav:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            flex: 1;
-        }
-
-        .nav-links a {
-            margin: 0 30px;
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            text-transform: uppercase;
-        }
-
-        .nav-links a:hover {
-            color: #ffd700;
-        }
-
-        .social-icons {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-right: 60px;
-        }
-
-        .social-icons img {
-            width: 30px;
-            height: auto;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .social-icons img:hover {
-            transform: scale(1.2);
-        }
-
-        main {
-            padding: 50px 20px;
-        }
-
-        section {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        section h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #ffd700;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-            transition: opacity 0.3s ease-in-out, transform 0.3s;
-            opacity: 1;
-        }
-
-        .gallery-item:hover img {
-            opacity: 0.3;
-            transform: scale(1.05);
-        }
-
-        .gallery .description {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #ffffff;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .gallery-item:hover .description {
-            opacity: 1;
-        }
-
-        .video-gallery {
-            display: flex;
-            gap: 40px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .video-item {
-            position: relative;
-            width: 450px;
-            height: 450px;
-            overflow: hidden;
-        }
-
-        .video-thumbnail {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 15px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .video-thumbnail:hover {
-            transform: scale(1.1);
-        }
-
-        .video-description {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #ffffff;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .video-item:hover .video-description {
-            opacity: 1;
-        }
-
-
-
-        @keyframes play-video {
-            0% { opacity: 1; }
-            100% { opacity: 1; }
-        }
-
-
-        footer {
-            text-align: center;
-            padding: 20px 10px;
-            background-color: #000;
-            color: #777;
-            position: fixed; 
-            bottom: 0; 
-            width: 100%;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jacob Monroe — Videographer, Howard University</title>
+  <meta name="description" content="Jacob Monroe is a videographer at Howard University in Washington, DC. Watch the films, see the rates, and book a shoot.">
+  <meta property="og:title" content="Jacob Monroe — Videographer">
+  <meta property="og:description" content="Videographer at Howard University, Washington, DC.">
+  <meta property="og:image" content="https://i.ytimg.com/vi/aL7wgQuylRU/maxresdefault.jpg">
+  <link rel="icon" href="images/jmp-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
 
-<nav>
-    <div class="nav-links">
-        <a href="san-francisco.html">San Francisco</a>
-        <a href="washington-dc.html">Washington, D.C.</a>
-        <a href="events.html">Events</a>
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Jacob Monroe, home"><span class="logo"></span></a>
+    <div class="nav-links mono">
+      <a class="hide-s" href="#films">Films</a>
+      <a class="hide-s" href="#photos">Stills</a>
+      <a href="#rates">Rates</a>
+      <a class="btn" href="#book">Book</a>
     </div>
-    <div class="social-icons">
-        <a href="https://www.instagram.com/jacobbb_photos/" target="_blank">
-            <img src="images/instagram-logo.png" alt="Instagram">
-        </a>
-        <a href="https://www.youtube.com/@jacobbb_photos" target="_blank">
-            <img src="images/youtube-logo.png" alt="YouTube">
-        </a>
-        <a href="https://www.linkedin.com/in/jacob-monroe-73263a211/" target="_blank">
-            <img src="images/linkedin-logo.png" alt="LinkedIn">
-        </a>
-    </div>
+  </div>
 </nav>
 
-<header>
-    <div class="slideshow">
-        <img src="images/DSC02742-Edit-3.jpg" alt="Metro Train">
-        <img src="images/DSC02815.jpg" alt="Golden Gate Bridge">
-        <img src="images/DSC02839-Edit.jpg" alt="Jet Ski Sunset">
-        <img src="images/DSC02872.jpg" alt="Framed Golden Gate">
-        <img src="images/DSC02701.jpg" alt="Pagoda in Trees">
-    </div>    
-    <div class="header-content fade-in">
-        <img src="images/jmp-logo.png" alt="JMP Logo">
-        <h2>Jacob Monroe</h2>
-    </div>
+<header class="hero" id="top" aria-roledescription="carousel" aria-label="Featured films">
+  <h1 class="sr">Jacob Monroe: videographer at Howard University</h1>
+  <p class="who mono">Jacob Monroe · Videographer · Howard University, Washington DC</p>
+  <div id="slides"></div>
+  <div class="hero-logo" role="img" aria-label="JMP"></div>
+  <div class="dots" id="dots"></div>
+  <span class="count mono" id="count"></span>
 </header>
 
-<main>
-    <section>
-        <h3 class="fade-in">Featured Photos</h3>
-        <div class="gallery" id="featured-photos">
-            <div class="gallery-item fade-in">
-                <a href="washington-dc.html">
-                    <img src="images/DSC02995-Edit.jpg" alt="Urban Street Scene">
-                    <div class="description">Washington D.C.</div>
-                </a>
-            </div>
-            <div class="gallery-item fade-in">
-                <a href="events.html">
-                    <img src="images/DSC06982.jpg" alt="Dramatic Moment">
-                    <div class="description">Events</div>
-                </a>
-            </div>
-            <div class="gallery-item fade-in">
-                <a href="san-francisco.html">
-                    <img src="images/DSC02701.jpg" alt="Serene Lighting">
-                    <div class="description">San Francisco</div>
-                </a>
-            </div>
-        </div>
-    </section>    
-    <section class="videos">
-        <h3 class="fade-in">My Videos</h3>
-        <div class="video-gallery">
-            <div class="video-item">
-                <a href="https://www.youtube.com/watch?v=WFHMotmZO9Q" target="_blank">
-                    <img class="video-thumbnail" src="images/sophomore-screenshot.jpg" alt="Sophomore Video Thumbnail">
-                    <div class="video-description">sophomore.mp4</div>
-                </a>
-            </div>
-            <div class="video-item">
-                <a href="https://www.youtube.com/watch?v=WrS8kGgV26c" target="_blank">
-                    <img class="video-thumbnail" src="images/bay-screenshot.jpg" alt="Bay Area Video Thumbnail">
-                    <div class="video-description">A day in SF</div>
-                </a>
-            </div>
-            <div class="video-item">
-                <a href="https://www.youtube.com/watch?v=JFMi3UOYPPc&t=3s" target="_blank">
-                    <img class="video-thumbnail" src="images/atlanta-screenshot.jpg" alt="Bowling Video Thumbnail">
-                    <div class="video-description">Atlanta Thanksgiving</div>
-                </a>
-            </div>
-        </div>
-    </section>
-    
+<section class="section" id="films">
+  <div class="wrap">
+    <div class="center-head">
+      <h2>Selected Films</h2>
+      <div class="filters" id="filters" role="group" aria-label="Filter films"></div>
+    </div>
+    <div class="films" id="film-grid"></div>
+    <div class="films-foot">
+      <a class="btn" href="https://www.youtube.com/@jacobbb_photos" target="_blank" rel="noopener">Everything on YouTube ↘</a>
+    </div>
+  </div>
+</section>
 
-<footer>
-    <p>&copy; 2025 Jacob Monroe Photography</p>
+<section class="section dark" id="photos">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="h2">Stills</h2>
+      <p>Three collections: campus nights, DC streets, and San Francisco.</p>
+    </div>
+    <div class="collections">
+      <a class="collection reveal" href="events.html">
+        <div class="frame"><img loading="lazy" src="images/web/DSC06982.jpg" alt="A line of men in white shirts, ties and masks at night"></div>
+        <div class="cap"><div><b>Events</b><span>Howard University</span></div><span>↘</span></div>
+      </a>
+      <a class="collection reveal" href="washington-dc.html">
+        <div class="frame"><img loading="lazy" src="images/web/DSC02995-Edit.jpg" alt="Pedestrians crossing a Chinatown intersection at dusk"></div>
+        <div class="cap"><div><b>Washington, D.C.</b><span>Street</span></div><span>↘</span></div>
+      </a>
+      <a class="collection reveal" href="san-francisco.html">
+        <div class="frame"><img loading="lazy" src="images/web/DSC02872.jpg" alt="The Golden Gate Bridge framed by cypress trees"></div>
+        <div class="cap"><div><b>San Francisco</b><span>Bay Area</span></div><span>↘</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="rates">
+  <div class="wrap rates-top">
+    <h2 class="lede"><span class="mono rate-label">Hourly rate</span><span class="big-rate">$90<small>/hr</small></span></h2>
+    <div class="side">
+      Editing, color grade and music are included in the hourly rate.
+      <div><a class="btn light" href="#book">Build an estimate</a></div>
+    </div>
+    <dl class="specs">
+      <div><dt>Minimum</dt><dd>2 hours</dd></div>
+      <div><dt>Includes</dt><dd>One edited recap, up to 60 seconds</dd></div>
+      <div><dt>Delivered</dt><dd>Within 7 days</dd></div>
+      <div><dt>Howard students and orgs</dt><dd>15% off</dd></div>
+      <div><dt>Deposit</dt><dd>30% to hold the date</dd></div>
+      <div><dt>Revisions</dt><dd>One round included</dd></div>
+    </dl>
+  </div>
+
+</section>
+
+<section class="section" id="book">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="h2">Build your estimate</h2>
+      <p>Set the hours and watch the total update. Send it over and I'll confirm the date.</p>
+    </div>
+
+    <div class="book" id="estimator">
+      <div>
+        <div class="field">
+          <span class="mono">Time on site</span>
+          <div class="stepper">
+            <button id="hours-less" aria-label="One hour less">−</button>
+            <output id="hours" aria-live="polite">2 hours</output>
+            <button id="hours-more" aria-label="One hour more">+</button>
+          </div>
+          <p class="mono muted" id="hours-min" style="margin:10px 0 0"></p>
+        </div>
+
+        <div class="field">
+          <span class="mono">Add-ons</span>
+          <div class="chips">
+            <button class="chip" data-addon="reel" aria-pressed="false">Extra vertical reel <small>+$45</small></button>
+            <button class="chip" data-addon="long" aria-pressed="false">Long-form edit, 2–4 min <small>+$150</small></button>
+            <button class="chip" data-addon="raw" aria-pressed="false">All raw footage <small>+$40</small></button>
+            <button class="chip" data-toggle="rush" aria-pressed="false">48-hour rush <small>+25%</small></button>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="mono">Howard rate</span>
+          <div class="chips">
+            <button class="chip" data-toggle="student" aria-pressed="false">I'm a Howard student or student org <small>−15%</small></button>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="mono">The shoot</span>
+          <div class="inputs">
+            <label><span class="mono">Your name</span><input id="f-name" type="text" autocomplete="name"></label>
+            <label><span class="mono">Date</span><input id="f-date" type="date"></label>
+            <label class="full"><span class="mono">Where</span><input id="f-where" type="text" placeholder="The Yard, Blackburn, off campus…"></label>
+            <label class="full"><span class="mono">Anything I should know</span><textarea id="f-notes" rows="3"></textarea></label>
+          </div>
+        </div>
+        <a class="mini mono" href="#slip"><span>Total due</span><b id="mini-total">$0</b><span>See estimate ↓</span></a>
+      </div>
+
+      <aside class="slip" id="slip" aria-label="Estimate">
+        <div class="slip-head mono"><span>Estimate</span><span>Per booking</span></div>
+        <dl id="slip-lines"></dl>
+        <div class="total"><span class="mono">Total due</span><b id="slip-total">$0</b></div>
+        <div class="dep mono"><span>Deposit to hold the date</span><span id="slip-deposit">$0</span></div>
+        <div class="actions">
+          <button class="btn light" id="send-dm">Send request on Instagram ↗</button>
+          <button class="btn ghost" id="send-email" hidden>Email request</button>
+        </div>
+        <div class="toast mono" id="toast" role="status"></div>
+        <div class="pay" id="pay" hidden>
+          <span class="mono">Date confirmed? Pay the deposit</span>
+          <div class="chips" id="pay-links"></div>
+        </div>
+        <p class="note">This is an estimate. Nothing is paid until I confirm I'm free that day.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="boxes">
+      <div class="box">
+        <h4>Work</h4>
+        <div><a href="#films">Films</a><a href="events.html">Events</a><a href="washington-dc.html">Washington, D.C.</a><a href="san-francisco.html">San Francisco</a></div>
+      </div>
+      <div class="box">
+        <h4>Book</h4>
+        <div><a href="#rates">Rates</a><a href="#book">Build an estimate</a></div>
+      </div>
+      <div class="box">
+        <h4>Jacob Monroe</h4>
+        <div>Howard University<br>Washington, DC</div>
+      </div>
+      <div class="tiles">
+        <a href="https://www.instagram.com/jacobbb_photos/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <a href="https://www.youtube.com/@jacobbb_photos" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
+        <a href="https://www.linkedin.com/in/jacob-monroe-73263a211/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
+      </div>
+    </div>
+    <div class="biglogo" role="img" aria-label="JMP"></div>
+    <div class="base">
+      <span>© <span id="year">2026</span> Jacob Monroe</span>
+      <span>Videographer, Howard University</span>
+    </div>
+  </div>
 </footer>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const nav = document.querySelector('nav');
-        nav.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-        nav.addEventListener('mouseenter', function () {
-            nav.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-        });
-        nav.addEventListener('mouseleave', function () {
-            nav.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-        });
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                } else {
-                    entry.target.classList.remove('visible');
-                }
-            });
-        }, {
-            threshold: 0.2
-        });
-        const fadeElements = document.querySelectorAll('.fade-in');
-        fadeElements.forEach(el => observer.observe(el));
-
-        const videos = document.querySelectorAll('.video');
-        videos.forEach(video => {
-            video.addEventListener('mouseover', function () {
-                video.muted = false; 
-                video.play();        
-            });
-            video.addEventListener('mouseleave', function () {
-                video.pause();       
-                video.currentTime = 0; 
-                video.muted = true;  
-            });
-        });
-    });
-</script>
-
-
+<script src="js/site.js?v=7"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

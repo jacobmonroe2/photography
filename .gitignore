@@ -1,0 +1,4 @@
+# Raw footage stays local. Only the short web loops and their posters are published.
+videos/*
+!videos/*-loop.mp4
+!videos/*-loop.jpg
